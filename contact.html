@@ -33,14 +33,27 @@
       </nav>
     </header>
 
-    <main class="page-shell">
-      <p class="page-kicker">Contact</p>
-      <h1 class="page-title">Let us build something precise.</h1>
-      <div class="contact-list">
-        <a href="mailto:hello@example.com">hello@example.com</a>
-        <a href="https://github.com/" rel="noreferrer">GitHub</a>
-        <a href="https://www.linkedin.com/" rel="noreferrer">LinkedIn</a>
-      </div>
+    <main class="page-shell page-shell--contact">
+      <section class="page-hero">
+        <p class="page-kicker">Contact</p>
+        <h1 class="page-title">Let us build something precise.</h1>
+      </section>
+
+      <section class="contact-board" aria-label="Contact details">
+        <div class="contact-list">
+          <a href="mailto:hello@example.com">hello@example.com</a>
+          <a href="https://github.com/" rel="noreferrer">GitHub</a>
+          <a href="https://www.linkedin.com/" rel="noreferrer">LinkedIn</a>
+        </div>
+        <aside class="contact-note">
+          <span>Availability</span>
+          <p>
+            Open to frontend engineering, interactive portfolio builds, and motion-heavy web
+            experiences.
+          </p>
+          <a class="pill-button pill-button--dark" href="mailto:hello@example.com">send message</a>
+        </aside>
+      </section>
     </main>
 
     <script type="module" src="dist/main.js"></script>

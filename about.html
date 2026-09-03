@@ -33,13 +33,46 @@
       </nav>
     </header>
 
-    <main class="page-shell">
-      <p class="page-kicker">About</p>
-      <h1 class="page-title">Engineer with a cinematic eye.</h1>
-      <p class="page-copy">
-        I am Leeroy, a software engineer focused on frontend systems, interactive motion, and
-        portfolio experiences that feel carefully composed without becoming heavy.
-      </p>
+    <main class="page-shell page-shell--about">
+      <section class="page-hero">
+        <p class="page-kicker">About</p>
+        <h1 class="page-title">Engineer with a cinematic eye.</h1>
+        <p class="page-copy">
+          I am Leeroy, a software engineer shaping interactive web experiences with typed frontend
+          systems, motion, and precise visual composition.
+        </p>
+      </section>
+
+      <section class="statement-band" aria-label="Engineering focus">
+        <div class="statement-band__image"></div>
+        <div class="statement-band__copy">
+          <span>Method</span>
+          <h2>Design the feeling. Engineer the repeatability.</h2>
+          <p>
+            I care about the details users feel immediately: loading rhythm, responsive layout,
+            animation timing, component states, and the small decisions that make an interface feel
+            finished.
+          </p>
+        </div>
+      </section>
+
+      <section class="page-grid page-grid--principles" aria-label="Principles">
+        <article class="page-card">
+          <span>01</span>
+          <h2>Systems</h2>
+          <p>Design tokens, reusable patterns, and TypeScript foundations that scale cleanly.</p>
+        </article>
+        <article class="page-card">
+          <span>02</span>
+          <h2>Motion</h2>
+          <p>Scroll, pointer, and timeline interactions tuned to feel deliberate rather than noisy.</p>
+        </article>
+        <article class="page-card">
+          <span>03</span>
+          <h2>Delivery</h2>
+          <p>Deployment-ready builds with clear structure, accessible markup, and practical polish.</p>
+        </article>
+      </section>
     </main>
 
     <script type="module" src="dist/main.js"></script>

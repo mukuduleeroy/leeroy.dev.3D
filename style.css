@@ -271,6 +271,19 @@ h1 {
   color: var(--color-paper);
 }
 
+.page-shell--about {
+  padding-bottom: 0;
+}
+
+.page-shell--contact {
+  min-height: 100vh;
+  background: var(--surface-chalk-footer);
+}
+
+.page-hero {
+  min-height: 54vh;
+}
+
 .page-kicker {
   margin: 0 0 var(--spacing-28);
   font-family: var(--font-helvetica-now);
@@ -289,10 +302,15 @@ h1 {
   letter-spacing: var(--tracking-display);
 }
 
-.page-grid {
+.page-grid,
+.work-showcase {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: var(--spacing-20);
+}
+
+.work-showcase {
+  margin-bottom: var(--spacing-96);
 }
 
 .page-card {
@@ -302,6 +320,11 @@ h1 {
   padding: var(--card-padding);
   background: var(--surface-bone-card);
   color: var(--color-ink);
+}
+
+.page-shell--dark .page-card {
+  border-color: rgba(255, 255, 255, 0.18);
+  background: var(--color-paper);
 }
 
 .page-card span {
@@ -329,9 +352,84 @@ h1 {
   line-height: 1.5;
 }
 
+.text-link {
+  display: inline-block;
+  margin-top: var(--spacing-28);
+  border-bottom: 1px solid currentColor;
+  padding-bottom: var(--spacing-4);
+  font-family: var(--font-helvetica-now);
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.statement-band {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.8fr) minmax(0, 1fr);
+  min-height: 560px;
+  margin-right: calc(var(--spacing-28) * -1);
+  margin-left: calc(var(--spacing-28) * -1);
+  background: var(--surface-ink-room);
+  color: var(--color-paper);
+}
+
+.statement-band__image {
+  min-height: 420px;
+  background-image: url("assets/hero-sequence/frame_032.png");
+  background-position: center;
+  background-size: cover;
+  filter: grayscale(1) contrast(1.08);
+}
+
+.statement-band__copy {
+  display: grid;
+  align-content: center;
+  padding: var(--spacing-60) var(--spacing-28);
+}
+
+.statement-band__copy span,
+.contact-note span {
+  display: block;
+  margin-bottom: var(--spacing-28);
+  font-family: var(--font-helvetica-now);
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.statement-band__copy h2 {
+  max-width: 760px;
+  margin-bottom: var(--spacing-28);
+  font-family: var(--font-davinci);
+  font-size: clamp(52px, 8vw, 94px);
+  font-weight: var(--font-weight-medium);
+  line-height: 0.84;
+}
+
+.statement-band__copy p,
+.contact-note p {
+  max-width: 520px;
+  margin-bottom: 0;
+  font-size: clamp(18px, 2.2vw, 24px);
+  line-height: 1.5;
+}
+
+.page-grid--principles {
+  padding: var(--spacing-96) 0;
+}
+
+.feature-section--inline {
+  margin-right: calc(var(--spacing-28) * -1);
+  margin-left: calc(var(--spacing-28) * -1);
+}
+
+.contact-board {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(300px, 420px);
+  gap: var(--spacing-28);
+  align-items: stretch;
+}
+
 .contact-list {
   display: grid;
-  max-width: 680px;
   gap: var(--spacing-16);
 }
 
@@ -341,6 +439,23 @@ h1 {
   font-family: var(--font-davinci);
   font-size: clamp(34px, 8vw, 94px);
   line-height: 0.95;
+}
+
+.contact-note {
+  display: grid;
+  align-content: end;
+  border-radius: var(--radius-cards);
+  padding: var(--card-padding);
+  background: var(--color-ink);
+  color: var(--color-paper);
+  clip-path: polygon(22px 0, calc(100% - 22px) 0, 100% 22px, 100% calc(100% - 22px), calc(100% - 22px) 100%, 22px 100%, 0 calc(100% - 22px), 0 22px);
+}
+
+.pill-button--dark {
+  width: fit-content;
+  margin-top: var(--spacing-32);
+  background: linear-gradient(180deg, var(--color-paper), var(--color-vellum));
+  color: var(--color-ink);
 }
 
 .notched-card {
@@ -524,12 +639,38 @@ h1 {
     padding: 112px var(--spacing-20) var(--spacing-60);
   }
 
+  .page-shell--about {
+    padding-bottom: 0;
+  }
+
+  .page-hero {
+    min-height: auto;
+    padding-bottom: var(--spacing-60);
+  }
+
   .page-title {
     margin-bottom: var(--spacing-40);
   }
 
-  .page-grid {
+  .page-grid,
+  .work-showcase,
+  .statement-band,
+  .contact-board {
     grid-template-columns: 1fr;
+  }
+
+  .statement-band,
+  .feature-section--inline {
+    margin-right: calc(var(--spacing-20) * -1);
+    margin-left: calc(var(--spacing-20) * -1);
+  }
+
+  .page-grid--principles {
+    padding: var(--spacing-60) 0;
+  }
+
+  .contact-note {
+    min-height: 320px;
   }
 
   .site-footer {

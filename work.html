@@ -34,25 +34,57 @@
     </header>
 
     <main class="page-shell page-shell--dark">
-      <p class="page-kicker">My Work</p>
-      <h1 class="page-title">Selected systems and scenes.</h1>
-      <div class="page-grid">
+      <section class="page-hero">
+        <p class="page-kicker">My Work</p>
+        <h1 class="page-title">Selected systems and scenes.</h1>
+        <p class="page-copy">
+          A compact look at the kind of work I build: responsive 3D presentation, motion-led
+          interfaces, and frontend systems ready to ship.
+        </p>
+      </section>
+
+      <section class="work-showcase" aria-label="Selected work">
         <article class="page-card">
           <span>01</span>
           <h2>3D Portfolio</h2>
           <p>Frame-scrubbed hero animation, responsive canvas drawing, and progressive image loading.</p>
+          <a href="/" class="text-link">view project</a>
         </article>
         <article class="page-card">
           <span>02</span>
           <h2>Motion UI</h2>
           <p>Scroll-linked interaction patterns designed to feel immediate, cinematic, and usable.</p>
+          <a href="/about" class="text-link">read approach</a>
         </article>
         <article class="page-card">
           <span>03</span>
           <h2>Frontend Systems</h2>
           <p>Typed code, token-aware CSS, deployment setup, and interfaces ready for production.</p>
+          <a href="/contact" class="text-link">start a build</a>
         </article>
-      </div>
+      </section>
+
+      <section class="feature-section feature-section--inline" aria-labelledby="tools-title">
+        <p class="section-label">Stack</p>
+        <h2 id="tools-title">TOOLS WITH TASTE</h2>
+        <div class="feature-grid">
+          <article class="feature">
+            <h3>TypeScript</h3>
+            <div class="feature__vignette feature__vignette--one"></div>
+            <div class="hex-row" aria-hidden="true"><span></span><span></span><span></span></div>
+          </article>
+          <article class="feature">
+            <h3>Canvas</h3>
+            <div class="feature__vignette feature__vignette--two"></div>
+            <div class="hex-row" aria-hidden="true"><span></span><span></span><span></span></div>
+          </article>
+          <article class="feature">
+            <h3>Vercel</h3>
+            <div class="feature__vignette feature__vignette--three"></div>
+            <div class="hex-row" aria-hidden="true"><span></span><span></span><span></span></div>
+          </article>
+        </div>
+      </section>
     </main>
 
     <script type="module" src="dist/main.js"></script>
