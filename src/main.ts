@@ -56,7 +56,7 @@ function setupFrameScrubber(canvas: HTMLCanvasElement): void {
   };
 
   const framePath = (index: number): string =>
-    `assets/hero-sequence/frame_${String(index).padStart(3, "0")}.png`;
+    `/assets/hero-sequence/frame_${String(index).padStart(3, "0")}.png`;
 
   function clamp(value: number, min: number, max: number): number {
     return Math.min(Math.max(value, min), max);

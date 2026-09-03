@@ -27,7 +27,7 @@ a {
   width: 100vw;
   height: 100vh;
   background: var(--color-ink);
-  background-image: url("assets/hero-sequence/frame_000.png");
+  background-image: url("/assets/hero-sequence/frame_000.png");
   background-position: center;
   background-size: cover;
 }
@@ -386,7 +386,7 @@ h1 {
 
 .statement-band__image {
   min-height: 420px;
-  background-image: url("assets/hero-sequence/frame_032.png");
+  background-image: url("/assets/hero-sequence/frame_032.png");
   background-position: center;
   background-size: cover;
   filter: grayscale(1) contrast(1.08);
@@ -561,15 +561,15 @@ h1 {
 }
 
 .feature__vignette--one {
-  --vignette: url("assets/hero-sequence/frame_008.png");
+  --vignette: url("/assets/hero-sequence/frame_008.png");
 }
 
 .feature__vignette--two {
-  --vignette: url("assets/hero-sequence/frame_030.png");
+  --vignette: url("/assets/hero-sequence/frame_030.png");
 }
 
 .feature__vignette--three {
-  --vignette: url("assets/hero-sequence/frame_052.png");
+  --vignette: url("/assets/hero-sequence/frame_052.png");
 }
 
 .hex-row {
