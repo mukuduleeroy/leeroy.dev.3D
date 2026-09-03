@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Leeroy.dev | Interactive 3D Portfolio</title>
+    <meta
+      name="description"
+      content="Leeroy.dev is a responsive portfolio with a scroll and pointer driven 3D PNG sequence."
+    >
+    <link rel="stylesheet" href="variables.css">
+    <link rel="stylesheet" href="theme.css">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap"
+      rel="stylesheet"
+    >
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <canvas id="frame-canvas" aria-hidden="true"></canvas>
+
+    <header class="site-header" aria-label="Primary">
+      <a class="logo-mark" href="#top" aria-label="Leeroy.dev home">L</a>
+      <a class="header-link" href="#contact">Leeroy.dev</a>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero__cluster">
+          <h1 id="hero-title">
+            <span class="hero__name">I'm Leeroy</span>
+            <span class="hero__role">Software Engineer</span>
+          </h1>
+        </div>
+        <p class="hero__wordmark" aria-hidden="true">Leeroy.dev</p>
+      </section>
+
+      <section id="work" class="canvas-section" aria-labelledby="work-title">
+        <div class="notched-card">
+          <span>SCROLL</span>
+          <h2 id="work-title">Selected work</h2>
+          <p>
+            Real-time product scenes, motion-led portfolios, and frontend systems that keep the
+            spectacle responsive.
+          </p>
+        </div>
+      </section>
+
+      <section class="feature-section" aria-labelledby="feature-title">
+        <p class="section-label">Capabilities</p>
+        <h2 id="feature-title">BUILDING THE FRAME</h2>
+        <div class="feature-grid">
+          <article class="feature">
+            <h3>3D interaction</h3>
+            <div class="feature__vignette feature__vignette--one"></div>
+            <div class="hex-row" aria-hidden="true"><span></span><span></span><span></span></div>
+          </article>
+          <article class="feature">
+            <h3>Motion systems</h3>
+            <div class="feature__vignette feature__vignette--two"></div>
+            <div class="hex-row" aria-hidden="true"><span></span><span></span><span></span></div>
+          </article>
+          <article class="feature">
+            <h3>Frontend craft</h3>
+            <div class="feature__vignette feature__vignette--three"></div>
+            <div class="hex-row" aria-hidden="true"><span></span><span></span><span></span></div>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer id="contact" class="site-footer">
+      <a href="mailto:hello@example.com">hello@example.com</a>
+      <div class="footer-links" aria-label="Social links">
+        <a href="https://github.com/" rel="noreferrer">GitHub</a>
+        <a href="https://www.linkedin.com/" rel="noreferrer">LinkedIn</a>
+        <a href="https://x.com/" rel="noreferrer">X</a>
+      </div>
+    </footer>
+
+    <script type="module" src="dist/main.js"></script>
+  </body>
+</html>
