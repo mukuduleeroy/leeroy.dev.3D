@@ -30,3 +30,18 @@ Open `index.html` directly in a browser, or serve the folder with any static ser
 ```bash
 npx serve .
 ```
+
+## Deploy to Vercel
+
+This repo includes `vercel.json` for deployment.
+
+Use these Vercel project settings:
+
+```text
+Framework Preset: Other
+Install Command: npm install
+Build Command: npm run build
+Output Directory: .
+```
+
+Vercel will compile `src/main.ts` into `dist/main.js` during deployment, then serve `index.html` from the project root.
