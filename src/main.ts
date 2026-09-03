@@ -21,6 +21,7 @@ function setupMobileMenu(): void {
   const setIsOpen = (isOpen: boolean): void => {
     document.body.classList.toggle("menu-is-open", isOpen);
     toggle.setAttribute("aria-expanded", String(isOpen));
+    toggle.setAttribute("aria-label", isOpen ? "Close menu" : "Open menu");
   };
 
   toggle.addEventListener("click", () => {
