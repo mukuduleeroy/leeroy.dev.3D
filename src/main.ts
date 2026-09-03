@@ -1,5 +1,6 @@
 type ScrubberState = {
   loaded: number;
+  criticalLoaded: number;
   currentFrame: number;
   targetFrame: number;
   pointerProgress: number;
@@ -26,9 +27,12 @@ const context = canvasContext;
 const heroFrameNumbers = Array.from({ length: 73 }, (_, index) => index * 4 + 1);
 heroFrameNumbers.push(290);
 const frameCount = heroFrameNumbers.length;
+const criticalFrameCount = Math.min(12, frameCount);
 const frameImages: HTMLImageElement[] = [];
+const loadedFrameIndexes = new Set<number>();
 const state: ScrubberState = {
   loaded: 0,
+  criticalLoaded: 0,
   currentFrame: 0,
   targetFrame: 0,
   pointerProgress: 0,
@@ -43,21 +47,69 @@ function clamp(value: number, min: number, max: number): number {
   return Math.min(Math.max(value, min), max);
 }
 
-function preloadFrames(): void {
-  for (let i = 0; i < frameCount; i += 1) {
-    const image = new Image();
-    image.decoding = "async";
-    image.src = framePath(i);
-    image.onload = () => {
+function createFrameImage(index: number): HTMLImageElement {
+  const image = new Image();
+  image.decoding = "async";
+  image.loading = index < criticalFrameCount ? "eager" : "lazy";
+
+  if (index < criticalFrameCount) {
+    image.setAttribute("fetchpriority", "high");
+  }
+
+  frameImages[index] = image;
+  return image;
+}
+
+function loadFrame(index: number): Promise<void> {
+  const image = frameImages[index] ?? createFrameImage(index);
+
+  if (loadedFrameIndexes.has(index)) {
+    return Promise.resolve();
+  }
+
+  return new Promise((resolve) => {
+    image.onload = async () => {
+      try {
+        await image.decode();
+      } catch {
+        // Some browsers resolve onload after decode already, so drawing is still safe here.
+      }
+
+      loadedFrameIndexes.add(index);
       state.loaded += 1;
 
-      if (i === 0 || state.loaded === frameCount) {
+      if (index < criticalFrameCount) {
+        state.criticalLoaded += 1;
+      }
+
+      if (index === 0 || state.criticalLoaded === criticalFrameCount) {
         drawFrame(Math.round(state.currentFrame));
       }
+
+      resolve();
     };
 
-    frameImages.push(image);
+    image.onerror = () => resolve();
+    image.src = framePath(index);
+  });
+}
+
+async function loadFramesInBatches(startIndex: number): Promise<void> {
+  const batchSize = 6;
+
+  for (let i = startIndex; i < frameCount; i += batchSize) {
+    const batch = Array.from(
+      { length: Math.min(batchSize, frameCount - i) },
+      (_, offset) => loadFrame(i + offset),
+    );
+    await Promise.all(batch);
   }
+}
+
+async function preloadFrames(): Promise<void> {
+  await Promise.all(Array.from({ length: criticalFrameCount }, (_, index) => loadFrame(index)));
+  document.body.classList.add("is-ready");
+  void loadFramesInBatches(criticalFrameCount);
 }
 
 function resizeCanvas(): void {
@@ -102,7 +154,28 @@ function drawImageCover(image: HTMLImageElement | undefined): void {
 function drawFrame(frameIndex: number): void {
   context.fillStyle = "#000000";
   context.fillRect(0, 0, canvas.width, canvas.height);
-  drawImageCover(frameImages[frameIndex] ?? frameImages[0]);
+  drawImageCover(frameImages[getClosestLoadedFrameIndex(frameIndex)] ?? frameImages[0]);
+}
+
+function getClosestLoadedFrameIndex(frameIndex: number): number {
+  if (loadedFrameIndexes.has(frameIndex)) {
+    return frameIndex;
+  }
+
+  for (let offset = 1; offset < frameCount; offset += 1) {
+    const previousIndex = frameIndex - offset;
+    const nextIndex = frameIndex + offset;
+
+    if (previousIndex >= 0 && loadedFrameIndexes.has(previousIndex)) {
+      return previousIndex;
+    }
+
+    if (nextIndex < frameCount && loadedFrameIndexes.has(nextIndex)) {
+      return nextIndex;
+    }
+  }
+
+  return 0;
 }
 
 function getScrollProgress(): number {
@@ -136,6 +209,6 @@ window.addEventListener(
 );
 
 resizeCanvas();
-preloadFrames();
+void preloadFrames();
 updateTargetFrame();
 animate();

@@ -15,6 +15,10 @@ body {
   letter-spacing: 0;
 }
 
+body:not(.is-ready) {
+  overflow: hidden;
+}
+
 a {
   color: inherit;
   text-decoration: none;
@@ -27,6 +31,41 @@ a {
   width: 100vw;
   height: 100vh;
   background: var(--color-ink);
+}
+
+.loader {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  display: grid;
+  place-items: center;
+  background: var(--color-ink);
+  color: var(--color-paper);
+  font-family: var(--font-helvetica-now);
+  font-size: 12px;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  transition:
+    opacity 320ms ease,
+    visibility 320ms ease;
+}
+
+body.is-ready .loader {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.site-header,
+main,
+.site-footer {
+  opacity: 0;
+  transition: opacity 420ms ease;
+}
+
+body.is-ready .site-header,
+body.is-ready main,
+body.is-ready .site-footer {
+  opacity: 1;
 }
 
 .site-header {
