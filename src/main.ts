@@ -23,7 +23,9 @@ if (!canvasContext) {
 }
 
 const context = canvasContext;
-const frameCount = 290;
+const heroFrameNumbers = Array.from({ length: 73 }, (_, index) => index * 4 + 1);
+heroFrameNumbers.push(290);
+const frameCount = heroFrameNumbers.length;
 const frameImages: HTMLImageElement[] = [];
 const state: ScrubberState = {
   loaded: 0,
@@ -35,7 +37,7 @@ const state: ScrubberState = {
 };
 
 const framePath = (index: number): string =>
-  `assets/frames/ezgif-frame-${String(index + 1).padStart(3, "0")}.png`;
+  `assets/frames/ezgif-frame-${String(heroFrameNumbers[index]).padStart(3, "0")}.png`;
 
 function clamp(value: number, min: number, max: number): number {
   return Math.min(Math.max(value, min), max);

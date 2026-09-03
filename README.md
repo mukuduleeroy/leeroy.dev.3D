@@ -8,12 +8,13 @@ The current PNG sequence has already been extracted here:
 
 ```text
 assets/frames/ezgif-frame-001.png
-assets/frames/ezgif-frame-002.png
+assets/frames/ezgif-frame-005.png
+assets/frames/ezgif-frame-009.png
 ...
 assets/frames/ezgif-frame-290.png
 ```
 
-To use a different sequence, drop the PNG files into `assets/frames` and update `frameCount` plus `framePath` in `src/main.ts`.
+The repository keeps a sampled 74-frame sequence to reduce GitHub repo size. To use a different sequence, drop the PNG files into `assets/frames` and update `heroFrameNumbers` plus `framePath` in `src/main.ts`.
 
 ## Run locally
 
