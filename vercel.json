@@ -2,9 +2,23 @@
   "installCommand": "npm install",
   "buildCommand": "npm run build",
   "outputDirectory": ".",
+  "rewrites": [
+    {
+      "source": "/about",
+      "destination": "/about.html"
+    },
+    {
+      "source": "/work",
+      "destination": "/work.html"
+    },
+    {
+      "source": "/contact",
+      "destination": "/contact.html"
+    }
+  ],
   "headers": [
     {
-      "source": "/assets/frames/(.*)",
+      "source": "/assets/hero-sequence/(.*)",
       "headers": [
         {
           "key": "Cache-Control",

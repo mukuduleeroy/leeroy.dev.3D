@@ -2,19 +2,19 @@
 
 A TypeScript-powered static portfolio site with a fixed full-screen canvas that scrubs through PNG frames as the user scrolls or moves their pointer. The visual direction uses `DESIGN.md`, `variables.css`, `theme.css`, and `tokens.js`.
 
-## Frame folder
+## Hero Sequence
 
-The current PNG sequence has already been extracted here:
+The current PNG sequence lives here:
 
 ```text
-assets/frames/ezgif-frame-001.png
-assets/frames/ezgif-frame-005.png
-assets/frames/ezgif-frame-009.png
+assets/hero-sequence/frame_000.png
+assets/hero-sequence/frame_001.png
+assets/hero-sequence/frame_002.png
 ...
-assets/frames/ezgif-frame-290.png
+assets/hero-sequence/frame_060.png
 ```
 
-The repository keeps a sampled 74-frame sequence to reduce GitHub repo size. To use a different sequence, drop the PNG files into `assets/frames` and update `heroFrameNumbers` plus `framePath` in `src/main.ts`.
+The original full frame folder was removed to keep the repo deployable. This project now uses a curated 61-frame hero sequence that preloads into memory and scrubs with scroll plus pointer movement. To use a different sequence, drop files into `assets/hero-sequence` and update `frameCount` plus `framePath` in `src/main.ts`.
 
 ## Run locally
 
